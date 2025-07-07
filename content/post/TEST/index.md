@@ -48,3 +48,52 @@ default: auto
 auto: （推荐） 自动根据访问者操作系统的设置来显示浅色或深色模式。
 light: 强制默认显示浅色模式。
 dark: 强制默认显示深色模式。
+
+
+
+
+# GitHub action
+1. 需要到github账户的developer生成TOKEN（目前是有限期一年）
+2. 然后到blog的main仓库的设置添加token并命名为TOKEN，这是因为在本地文件的yaml文件里面的名字是TOKEN，这样可以不改此文件。
+在hugo主文件创建一个.github/workflows/xxxx.yaml文件，将以下内容复制进去:
+``` yaml
+name: deploy
+
+# 代码提交到main分支时触发github action
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+              fetch-depth: 0
+
+        - name: Setup Hugo
+          uses: peaceiris/actions-hugo@v3
+          with:
+              hugo-version: "latest"
+              extended: true
+
+        - name: Build Web
+          run: hugo -D
+
+        - name: Deploy Web
+          uses: peaceiris/actions-gh-pages@v4
+          with:
+              PERSONAL_TOKEN: ${{ secrets.你的token变量名 }}
+              EXTERNAL_REPOSITORY: 你的github名/你的仓库名
+              PUBLISH_BRANCH: main
+              PUBLISH_DIR: ./public
+              commit_message: auto deploy
+
+```
+
+3. 当有新文章后，在本地main推送上github，不是在那个public的文件
+4. 推送上去之后，会自动GitHub Actions，修改blog网页的仓库，进而修改个人博客内容。
+5. Github action的好处是，不需要在public的文件夹内提交到GitHub上了，只需要在main文件夹即可。
