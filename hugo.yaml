@@ -21,12 +21,12 @@ languages:
     #         sidebar:
     #             subtitle: Example description
     zh-cn:
-        languageName: 中文
+        languageName: zh-cn
         title: etherealzoom
         weight: 1
         params:
             sidebar:
-                subtitle: Timely.
+                subtitle: Welcome!
 
 services:
     # Change it to your Disqus shortname before using
