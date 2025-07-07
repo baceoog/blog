@@ -132,14 +132,6 @@ params:
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
     main: []
-        # - identifier: home
-        #   name: 首页
-        #   url: /
-        #   weight: -100 #权重
-        #   params:
-        #       ### For demonstration purpose, the home link will be open in a new tab
-        #       newTab: false
-        #       icon: 
 
     social:
         - identifier: github
