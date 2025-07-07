@@ -2,6 +2,7 @@
 date = '2025-07-08T00:55:10+08:00'
 draft = false
 title = 'Jd_vs_mt'
+categories = 'Business'
 +++
 
 # 京东激战美团：一场即时零售的终局之战？

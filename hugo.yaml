@@ -131,28 +131,28 @@ params:
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-    main:
-        - identifier: home
-          name: 首页
-          url: /
-          weight: -100 #权重
-          params:
-              ### For demonstration purpose, the home link will be open in a new tab
-              newTab: false
-              icon: 
+    main: []
+        # - identifier: home
+        #   name: 首页
+        #   url: /
+        #   weight: -100 #权重
+        #   params:
+        #       ### For demonstration purpose, the home link will be open in a new tab
+        #       newTab: false
+        #       icon: 
 
     social:
         - identifier: github
           name: GitHub
           url: https://github.com/etherealzoom
-          weight: 1
+        #   weight: 1
           params:
               icon: brand-github
 
         - identifier: bilibili
           name: bilibili
           url: https://space.bilibili.com/441382883?spm_id_from=333.337.0.0
-          weight: 2
+        #   weight: 2
           params:
               icon: brand-bilibili
 
