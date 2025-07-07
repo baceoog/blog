@@ -2,3 +2,4 @@ public
 resources
 .hugo_build.lock
 hugo.exe
+github_action.txt
