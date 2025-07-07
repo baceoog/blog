@@ -1,10 +1,10 @@
 +++
 date = '2025-07-07T20:16:23+08:00'
 draft = true
-title = 'TEST'
+title = 'hugo depoly'
 +++
 
-# hugo need install
+# hugo need install weight
 
 1. utyerance评论系统
 2. 加音乐播放器：Aplayer  +  MetingJs
