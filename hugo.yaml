@@ -70,7 +70,7 @@ params:
     article:
         math: true
         toc: true
-        readingTime: true
+        readingTime: false
         license:
             enabled: true
             default: Copyright © 2025 etherealzoom
@@ -79,86 +79,12 @@ params:
         enabled: true
         provider: utterances
 
-        disqusjs:
-            shortname:
-            apiUrl:
-            apiKey:
-            admin:
-            adminLabel:
-
         utterances:
             repo:
             issueTerm: pathname
             label:
 
-        beaudar:
-            repo:
-            issueTerm: pathname
-            label:
-            theme:
 
-        remark42:
-            host:
-            site:
-            locale:
-
-        vssue:
-            platform:
-            owner:
-            repo:
-            clientId:
-            clientSecret:
-            autoCreateIssue: false
-
-        # Waline client configuration see: https://waline.js.org/en/reference/component.html
-        waline:
-            serverURL:
-            lang:
-            pageview:
-            emoji:
-                - https://unpkg.com/@waline/emojis@1.0.1/weibo
-            requiredMeta:
-                - name
-                - email
-                - url
-            locale:
-                admin: Admin
-                placeholder:
-
-        twikoo:
-            envId:
-            region:
-            path:
-            lang:
-
-        # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
-        cactus:
-            defaultHomeserverUrl: "https://matrix.cactus.chat:8448"
-            serverName: "cactus.chat"
-            siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
-
-        giscus:
-            repo:
-            repoID:
-            category:
-            categoryID:
-            mapping:
-            lightTheme:
-            darkTheme:
-            reactionsEnabled: 1
-            emitMetadata: 0
-
-        gitalk:
-            owner:
-            admin:
-            repo:
-            clientID:
-            clientSecret:
-            proxy:
-
-        cusdis:
-            host:
-            id:
     widgets:
         homepage:
             - type: search
@@ -205,18 +131,28 @@ params:
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-    main: []
+    main:
+        - identifier: home
+          name: 首页
+          url: /
+          weight: -100 #权重
+          params:
+              ### For demonstration purpose, the home link will be open in a new tab
+              newTab: false
+              icon: 
 
     social:
         - identifier: github
           name: GitHub
           url: https://github.com/etherealzoom
+          weight: 1
           params:
               icon: brand-github
 
         - identifier: bilibili
           name: bilibili
           url: https://space.bilibili.com/441382883?spm_id_from=333.337.0.0
+          weight: 2
           params:
               icon: brand-bilibili
 
