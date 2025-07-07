@@ -1,13 +1,13 @@
 ---
 title: About
 description: 
-date: '2019-02-28'
+date: '2025-07-07'
 aliases:
   - about-us
   - about-hugo
   - contact
 license: Copyright © 2025 etherealzoom
-lastmod: '2020-10-09'
+lastmod: '2025-07-07'
 menu:
     main: 
         weight: -90
