@@ -37,33 +37,39 @@
             </div>
         {{ end }}
 
-        {{ if $showReadingTime }}
+        <!-- {{ if $showReadingTime }}
             <div>
                 {{ partial "helper/icon" "clock" }}
                 <time class="article-time--reading">
                     {{ T "article.readingTime" .ReadingTime }}
                 </time>
             </div>
-        {{ end }}
+        {{ end }} -->
 
-        {{- if ne .Lastmod .Date -}}
+            <!-- Created Date -->
+        {{- $pubdate := .PublishDate.Format "Jan 02, 2006" }}
+            <!-- Last Updated Date -->
+            {{- if .Lastmod }}
+                {{- $lastmod := .Lastmod.Format "Jan 02, 2006" }}
+                    {{- if ne $lastmod $pubdate }}
+                        最后修改:
+                        <time class="article-time--updated" datetime="{{ .Lastmod }}" title="{{ .Lastmod }}">
+                            {{ $lastmod }}
+                        </time>
+                {{- end }}
+            {{- end }}
+
+
+        
+        <!-- {{- if ne .Lastmod .Date -}}
           <div>
               {{ partial "helper/icon" "date" }}
             <time class="article-time--published">
                     {{ T "article.lastUpdatedOn" }} {{ .Lastmod | time.Format ( or .Site.Params.dateFormat.lastUpdated "Jan 02, 2006 15:04 MST" ) }}
             </time>
           </div>
-        {{- end -}}
-      
+        {{- end -}} -->
         
-        {{ if .Params.wordCount }}
-            <div>
-                {{ partial "helper/icon" "word" }}
-                <span class="article-time--wordcount">
-                    {{ T "article.wordCount" .WordCount }}
-                </span>
-            </div>
-        {{ end }}            
 
     </footer>
     {{ end }}
