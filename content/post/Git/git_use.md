@@ -3,7 +3,7 @@ date = '2025-07-08T02:15:15+08:00'
 draft = true
 title = 'Git_use'     
 description = '在学习Git过程中的记录'    
-categories = 'Git'
+categories = '项目管理'
 +++
 
 

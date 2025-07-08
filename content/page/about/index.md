@@ -16,6 +16,6 @@ menu:
 ---
 
 
-***University*** Sun Yat-sen University, Guangzhou, China
+***University:***  Sun Yat-sen University, Guangzhou, China
 
-***major***      Microelectronics Science and Engineering
+***major:***       Microelectronics Science and Engineering
