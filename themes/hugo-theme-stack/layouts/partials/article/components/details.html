@@ -48,6 +48,18 @@
     </footer>
     {{ end }}
 
+    {{ if .Site.Params.article.readingTime }}
+      <div>
+        {{ partial "helper/icon" "file-description" }}
+          <time class="article-words">
+            {{ T "article.wordCount" .WordCount }}
+          </time>
+       </div>
+     {{ end }}
+
+
+    
+    
     {{ if .IsTranslated }}
         <footer class="article-translations">
             {{ partial "helper/icon" "language" }}

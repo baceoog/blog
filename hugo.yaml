@@ -68,6 +68,7 @@ params:
             src: img/avatar.png
 
     article:
+        wordCount: true
         math: true
         toc: true
         readingTime: false
