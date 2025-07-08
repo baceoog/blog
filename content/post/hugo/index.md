@@ -131,14 +131,15 @@ src: 填写图片的路径或完整的 URL。
 
 将整个Blog风格统一化，左侧边栏使用英文标注各个page
 
-### 6
+### 保留默认浅色/深色模式
 
-6
+保留原本的，不用多加颜色的，不过可以微调浅色和深色的色调，加强文字背景对比度
 
 ### 改善白天模式可读性
 
 在Stack以及很多主题中，主题文件夹下的assets/scss下都提供了一个供用户自定义的custom.scss文件。
 将下面代码块复制到custom.scss文件中，会对比度会更高，看得会更清晰。
+
 ``` scss
 :root {
   --body-background: #EBEBEB;
@@ -157,7 +158,7 @@ src: 填写图片的路径或完整的 URL。
 }
 ```
 
-References.     
+*References.*  
 [oxidane-uni的博客](https://oxidane-uni.github.io/p/%E4%BD%BF%E7%94%A8-hugo-%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E9%87%8D%E5%BB%BA%E4%B8%8E-stack-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/#%E6%96%B0%E5%BB%BA%E7%BD%91%E7%AB%99)
 
 ### 更改白天/黑夜模式图标
@@ -165,11 +166,12 @@ References.
 观察网页的CSS可以发现：深色模式下图标的切换就是“一个显示，一个隐藏”，在相关文件中指定该用的图标即可。
 在[tabler](https://tabler-icons.io/)下载"sun-high"和"moon-stars"这两个图标，好看。
 作者将黑白开关做在了侧边栏里，因而直接在有关的
-.\assets\scss\partials\sidebar.scss和\layouts\partials\sidebar\left.html里指定图标即可: 
+.\assets\scss\partials\sidebar.scss和\layouts\partials\sidebar\left.html里指定图标即可:  
 
 (1) 在**.\assets\scss\partials\sidebar.scss**中，修改代码为下面这样：
 
 {{< details >}}
+
 ```scss
 [data-scheme="dark"] {
     #dark-mode-toggle {
@@ -320,6 +322,55 @@ Then this shortcode can be used inside the content file, in markdown, in the fol
 *References.*
 [content_clapse](https://stackoverflow.com/questions/71691219/add-collapsible-section-in-hugo)
 
+### macOS 风格的代码块
+
+在 assets/scss/partials/layout/article.scss，找到 .highlight 部分并修改成如下:
+
+```scss
+.highlight {
+    background-color: var(--pre-background-color);
+    padding: var(--card-padding);
+    position: relative;
+    border-radius: 10px;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-shadow: var(--shadow-l1) !important;
+```
+
+创建 assets/img/code-header.svg 文件，编辑输入：
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"  x="0px" y="0px" width="450px" height="130px">
+    <ellipse cx="65" cy="65" rx="50" ry="52" stroke="rgb(220,60,54)" stroke-width="2" fill="rgb(237,108,96)"/>
+    <ellipse cx="225" cy="65" rx="50" ry="52"  stroke="rgb(218,151,33)" stroke-width="2" fill="rgb(247,193,81)"/>
+    <ellipse cx="385" cy="65" rx="50" ry="52"  stroke="rgb(27,161,37)" stroke-width="2" fill="rgb(100,200,86)"/>
+</svg>
+
+```
+
+最后在 assets/scss/custom.scss 添加代码块的样式：
+
+```scss
+// 为代码块顶部添加 macos 样式
+.article-content {
+    .highlight:before {
+      content: "";
+      display: block;
+      background: url(/img/code-header.svg);
+      height: 25px;
+      width: 100%;
+      background-size: 52px;
+      background-repeat: no-repeat;
+      margin-top: -10px;
+      margin-bottom: 0;
+    }
+  }
+```
+
+可能存在行数的问题，可以取消行数：  
+打开hugo.yaml，修改highlight部分为`lineNos: false`
+
+
 
 ## EDN.hugo 优化
 
@@ -336,4 +387,9 @@ about部分可以中英文，一式两份
 10. ~~开启GitHub Actions~~
 11. 评论系统推荐giscus, better than utyerance评论系统
 12. 加音乐播放器：Aplayer  +  MetingJs(优先级很低)
-13. 添加content折叠功能
+13. ~~添加content折叠功能~~
+14. ~~macOS 风格的代码块~~
+
+***References.Blog***
+1. [第三夏尔 | Third Shire](https://thirdshire.com/hugo-stack-renovation-part-three/)
+2. 
