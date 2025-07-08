@@ -62,7 +62,7 @@ git checkout <commit id> 文件名
 git checkout <commit id> 文件名
 
 ```
-![[Pasted image 20240414204413.png]]
+![](https://raw.githubusercontent.com/etherealzoom/blog_img/main/Pic/Git_Flow.png)
 
 
 知识点
