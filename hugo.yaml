@@ -58,6 +58,9 @@ params:
         published: Jul 07, 2025
         lastUpdated: Jul 07, 2025 20:00 MST
 
+    frontmatter:
+        lastmod: [":fileModTime", "lastmod"]
+
     sidebar:
         emoji:
         # emoji: 🍥
