@@ -1,7 +1,7 @@
 +++
 date = '2025-07-07T20:16:23+08:00'
-draft = true
 title = 'hugo depoly'
+draft = fasle
 +++
 
 # hugo need install weight

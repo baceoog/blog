@@ -7,8 +7,13 @@ links:
     image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
     
   - title: tabler-icons
-    description: A website to download theme icon.
+    description: A website to download theme icon(format SVG).
     website: https://tabler.io/icons
+    image: 
+
+  - title: flaticon
+    description: A website to download .ico file.
+    website: https://www.flaticon.com/icons
     image: 
 menu:
     main: 
