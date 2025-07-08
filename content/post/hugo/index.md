@@ -3,7 +3,7 @@ date = '2025-07-07T20:16:23+08:00'
 title = 'hugo depoly'
 draft = false
 description = ""
-categories = "Business"
+categories = "hugo"
 image = ""
 +++
 
