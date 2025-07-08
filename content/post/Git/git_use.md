@@ -1,13 +1,14 @@
 +++
 date = '2025-07-08T02:15:15+08:00'
+title = 'Git_use'
 draft = true
-title = 'Git_use'     
 description = '在学习Git过程中的记录'    
 categories = '项目管理'
 +++
 
 
 **命令**
+
 ```c
 # 初始化一个本地仓库
 git init
