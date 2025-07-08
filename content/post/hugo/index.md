@@ -1,5 +1,5 @@
 +++
-date = '2025-07-07T20:16:23+08:00'
+date = 'Jul 07, 2025 20:00 MST'
 title = 'hugo depoly'
 draft = false
 +++
