@@ -97,3 +97,28 @@ jobs:
 3. 当有新文章后，在本地main推送上github，不是在那个public的文件
 4. 推送上去之后，会自动GitHub Actions，修改blog网页的仓库，进而修改个人博客内容。
 5. Github action的好处是，不需要在public的文件夹内提交到GitHub上了，只需要在main文件夹即可。
+
+
+# hugo-stack set double coulnm
+  在VSCode里面搜索 ***custom.scss*** 文件，然后添加下面代码即可
+```scss
+@media (min-width: 1024px) {
+  .article-list--compact.links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: none;
+      box-shadow: none;
+      
+      article {
+          background: var(--card-background);
+          border: none;
+          box-shadow: var(--shadow-l2);
+          margin-bottom: 8px;
+          border-radius: 10px;
+          &:nth-child(odd) {
+              margin-right: 8px;
+          }
+      }
+  }
+}
+```
