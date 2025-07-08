@@ -1,9 +1,9 @@
 ---
-title: "Test"
-description: "This is an example category"
-slug: "test"
-image: "hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg"
+title: "Hugo"
+description: "The thing of Hugo developing."
+slug: "Hugo"
+image: ""
 style:
-    background: "#2a9d8f"
+    background: "#ff0000"
     color: "#fff"
 ---

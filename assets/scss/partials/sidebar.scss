@@ -164,6 +164,16 @@
         .icon-tabler-moon-stars {
             display: unset;
         }
+
+        /* 在暗色模式下，隐藏“浅色模式”的文字 */
+        .label-light {
+            display: none;
+        }
+        /* 在暗色模式下，显示“暗色模式”的文字 */
+        .label-dark {
+            display: unset;
+        }
+
     }
 }
 
@@ -178,7 +188,14 @@
     .icon-tabler-moon-stars {
         display: none;
     }
+
+    /* 在亮色模式下，隐藏“暗色模式”的文字 */
+    .label-dark {
+        display: none;
+    }
+    
 }
+
 
 #i18n-switch {
     color: var(--body-text-color);

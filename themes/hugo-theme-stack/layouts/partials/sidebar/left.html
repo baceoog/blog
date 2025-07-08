@@ -94,7 +94,8 @@
                     <li id="dark-mode-toggle">
                         {{ partial "helper/icon" "sun-high" }}
                         {{ partial "helper/icon" "moon-stars" }}
-                        <span>{{ T "darkMode" }}</span>
+                        <!-- <span>{{ T "darkMode" }}</span> -->
+                         <span class="label-light">{{ T "lightMode" }}</span> <span class="label-dark">{{ T "darkMode" }}</span> 
                     </li>
                 {{ end }}
             </ol>

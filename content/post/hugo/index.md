@@ -3,7 +3,7 @@ date = '2025-07-07T20:16:23+08:00'
 title = 'Hugo Depoly'
 draft = false
 description = ""
-categories = "Hugo"
+categories = ["Hugo"]
 image = ""
 +++
 
@@ -13,10 +13,6 @@ image = ""
   
   main文件夹里面的文件优先级最高，如果main中有文件的层级与在theme中一致，那么会优先采取main中的设置。
 所以为了防止theme中的源文件被修改，通常会复制一份到main文件中进行修改，这样如果出问题了，还有后悔药吃。
-
-
-
-
 
 ## Hugo optimization 手记
 
@@ -39,6 +35,9 @@ image = ""
 1. 需要到github账户的developer生成TOKEN（目前是有限期一年）
 2. 然后到blog的main仓库的设置添加token并命名为TOKEN，这是因为在本地文件的yaml文件里面的名字是TOKEN，这样可以不改此文件。
 在hugo主文件创建一个.github/workflows/xxxx.yaml文件，将以下内容复制进去:
+
+{{< details >}}
+
 ``` yaml
 name: deploy
 
@@ -77,13 +76,16 @@ jobs:
 
 ```
 
+{{< /details >}}
+
 3. 当有新文章后，在本地main推送上github，不是在那个public的文件
 4. 推送上去之后，会自动GitHub Actions，修改blog网页的仓库，进而修改个人博客内容。
 5. Github action的好处是，不需要在public的文件夹内提交到GitHub上了，只需要在main文件夹即可。
 
+### hugo-stack 设置双列Links
 
-### hugo-stack set double coulnm
-  在VSCode里面搜索 ***custom.scss*** 文件，然后添加下面代码即可
+在VSCode里面搜索 ***custom.scss*** 文件，然后添加下面代码即可
+
 ```scss
 @media (min-width: 1024px) {
   .article-list--compact.links {
@@ -166,6 +168,8 @@ References.
 .\assets\scss\partials\sidebar.scss和\layouts\partials\sidebar\left.html里指定图标即可: 
 
 (1) 在**.\assets\scss\partials\sidebar.scss**中，修改代码为下面这样：
+
+{{< details >}}
 ```scss
 [data-scheme="dark"] {
     #dark-mode-toggle {
@@ -196,7 +200,11 @@ References.
 }
 ```
 
+{{< /details >}}
+
 (2)在**\layouts\partials\sidebar\left.html**中，修改代码为下面这样，用于修改图标
+
+{{< details >}}
 
 ```html
 {{ if (default false .Site.Params.colorScheme.toggle) }}
@@ -208,9 +216,110 @@ References.
 {{ end }}
 ```
 
-***(3)修改白天/黑夜模式的文字***
+{{< /details >}}
 
+***(3)修改白天/黑夜模式的文字***
 \i18n\zh-cn.yaml中修改即可
+
+***(4)解决无论浅色深色都只有深色模式显示的问题***  
+第一步修改 left.html  
+增加浅色深色变化项目
+
+{{< details >}}
+
+```html
+//修改前
+{{ if (default false .Site.Params.colorScheme.toggle) }}
+    <li id="dark-mode-toggle">
+        {{ partial "helper/icon" "sun-high" }}
+        {{ partial "helper/icon" "moon-stars" }}
+        <span>{{ T "darkMode" }}</span>
+    </li>
+
+//修改后
+{{ if (default false .Site.Params.colorScheme.toggle) }}
+    <li id="dark-mode-toggle">
+        {{ partial "helper/icon" "sun-high" }}
+        {{ partial "helper/icon" "moon-stars" }}
+        <!-- <span>{{ T "darkMode" }}</span> -->
+         <span class="label-light">{{ T "lightMode" }}</span> <span class="label-dark">{{ T "darkMode" }}</span> 
+    </li>
+```
+
+{{< /details >}}
+
+第二步修改 sidebar.scss  
+增加注释内容，达到在深色浅色不同模式下，隐藏显示不同的东西
+
+{{< details >}}
+
+```scss
+[data-scheme="dark"] {
+    #dark-mode-toggle {
+        color: var(--accent-color);
+        font-weight: 700;
+
+        .icon-tabler-sun-high {
+            display: none;
+        }
+
+        .icon-tabler-moon-stars {
+            display: unset;
+        }
+
+        /* 在暗色模式下，隐藏“浅色模式”的文字 */
+        .label-light {
+            display: none;
+        }
+        /* 在暗色模式下，显示“暗色模式”的文字 */
+        .label-dark {
+            display: unset;
+        }
+
+    }
+}
+
+#dark-mode-toggle {
+    margin-top: auto;
+    color: var(--body-text-color);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: var(--menu-icon-separation);
+
+    .icon-tabler-moon-stars {
+        display: none;
+    }
+
+    /* 在亮色模式下，隐藏“暗色模式”的文字 */
+    .label-dark {
+        display: none;
+    }
+    
+}
+```
+
+{{< /details >}}
+
+### 添加content折叠功能
+
+Create a shortcode in /layouts/shortcodes/details.html
+
+```html
+<details>
+  <summary>{{ (.Get 0) | markdownify }}</summary>
+  {{ .Inner | markdownify }}
+</details>
+```
+
+Then this shortcode can be used inside the content file, in markdown, in the following way:
+{{< details >}}
+折叠压缩
+{{< /details >}}
+
+*References.*
+[content_clapse](https://stackoverflow.com/questions/71691219/add-collapsible-section-in-hugo)
+
 
 ## EDN.hugo 优化
 
@@ -227,4 +336,4 @@ about部分可以中英文，一式两份
 10. ~~开启GitHub Actions~~
 11. 评论系统推荐giscus, better than utyerance评论系统
 12. 加音乐播放器：Aplayer  +  MetingJs(优先级很低)
-13. 
+13. 添加content折叠功能
