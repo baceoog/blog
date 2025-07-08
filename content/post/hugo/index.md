@@ -6,7 +6,7 @@ draft = false
 
 # hugo need install weight
 
-1. utyerance评论系统
+1. 评论系统推荐giscus, better than utyerance评论系统
 2. 加音乐播放器：Aplayer  +  MetingJs
 3. widgets homepage 小组件
 4. opengraph
