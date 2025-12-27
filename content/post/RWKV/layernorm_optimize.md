@@ -1,7 +1,7 @@
 +++
 date = '2025-07-12T22:46:37+08:00'
 title = 'Layernorm_optimize'
-draft = 'false'
+draft = 'true'
 description = ""   
 categories = ["RWKV"]
 image = ""
