@@ -1,8 +1,8 @@
-baseurl: https://etherealzoom.github.io/blog/
+baseurl: https://veilsoar.github.io/blog/
 languageCode: en-us
 theme: hugo-theme-stack
 title: Example Site
-copyright: etherealzoom
+copyright: veilsoar
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
@@ -22,11 +22,11 @@ languages:
     #             subtitle: Example description
     zh-cn:
         languageName: zh-cn
-        title: etherealzoom
+        title: veilsoar
         weight: 1
         params:
             sidebar:
-                subtitle: Welcome!
+                subtitle: 大大方方做事
 
 services:
     # Change it to your Disqus shortname before using

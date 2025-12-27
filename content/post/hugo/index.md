@@ -1,7 +1,7 @@
 +++
 date = '2025-07-07T20:16:23+08:00'
 title = 'Hugo Depoly'
-draft = false
+draft = true
 description = ""
 categories = ["Hugo"]
 image = ""
