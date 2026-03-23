@@ -1,7 +1,7 @@
 +++
 date = '2025-07-09T21:56:37+08:00'
 title = '从Xring O1说开来'
-draft = 'true'
+draft = 'false'
 description = ""   
 categories = "Tech_Garden"
 image = ""
