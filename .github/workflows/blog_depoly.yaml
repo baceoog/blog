@@ -30,7 +30,6 @@ jobs:
               # PERSONAL_TOKEN: ${{ secrets.TOKEN }}
               github_token: ${{ secrets.GITHUB_TOKEN }}
               # EXTERNAL_REPOSITORY: baceoog/blog
-              publish_branch: gh-pages
-              PUBLISH_BRANCH: main
+              PUBLISH_BRANCH: gh-pages
               PUBLISH_DIR: ./public
               commit_message: auto deploy
