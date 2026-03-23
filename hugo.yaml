@@ -1,8 +1,8 @@
-baseurl: https://veilsoar.github.io/blog/
-languageCode: en-us
+baseurl: https://baceoog.github.io/blog/
+languageCode: zh-cn
 theme: hugo-theme-stack
-title: Example Site
-copyright: veilsoar
+title: baceoog
+copyright: baceoog
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
@@ -22,7 +22,7 @@ languages:
     #             subtitle: Example description
     zh-cn:
         languageName: zh-cn
-        title: veilsoar
+        title: baceoog
         weight: 1
         params:
             sidebar:
@@ -77,16 +77,17 @@ params:
         readingTime: false
         license:
             enabled: true
-            default: Copyright © 2025 veilsoar
+            default: Copyright 2025 baceoog. All rights reserved.
 
     comments:
         enabled: true
         provider: utterances
 
         utterances:
-            repo:
+            repo: baceoog/blog
             issueTerm: pathname
-            label:
+            label: Comment
+            theme: github-dark
 
 
     widgets:
@@ -140,7 +141,7 @@ menu:
     social:
         - identifier: github
           name: GitHub
-          url: https://github.com/veilsoar
+          url: https://github.com/baceoog
         #   weight: 1
           params:
               icon: brand-github

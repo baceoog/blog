@@ -6,7 +6,7 @@ aliases:
   - about-us
   - about-hugo
   - contact
-license: Copyright © 2025 etherealzoom
+license: Copyright 2025 baceoog. All rights reserved.
 lastmod: '2025-07-07'
 menu:
     main: 
