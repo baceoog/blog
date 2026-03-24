@@ -63,3 +63,128 @@
 // :root {
 //   --code-font-family: 'CodeFont', monospace;
 // }
+/* 放在 assets/scss/custom.scss */
+// .typing-slogan {
+//     display: inline-block;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     border-right: 3px solid var(--accent-color); /* 随主题变色的光标 */
+//     animation: typing 3.5s steps(26) infinite, blink 0.75s step-end infinite;
+//     width: 26ch;
+//     font-family: monospace; /* 必须是等宽字体，ch单位才精准 */
+//     color: var(--accent-color-darker); /* 更有质感的深色 */
+// }
+
+// @keyframes typing {
+//     from { width: 0 }
+//     to { width: 26ch }
+// }
+
+// @keyframes blink {
+//     from, to { border-color: transparent }
+//     50% { border-color: var(--accent-color) }
+// }
+// .typing-slogan {
+//   display: inline-block;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   border-right: 3px solid #fff; /* 光标 */
+//   animation: typing 3s steps(26) infinite, blink 0.75s step-end infinite;
+//   width: 26ch; /* 字符个数，包括空格和逗号 */
+//   opacity: 1;
+//   color: #fff;
+// }
+
+
+// .typing-slogan {
+//     display: inline-block;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     /* 设置光标样式 */
+//     border-right: 3px solid var(--accent-color); 
+//     /* 总时长 8 秒：2.4秒打字 + 5.6秒停顿看字 */
+//     animation: 
+//         typing 8s steps(26) infinite, 
+//         blink 0.75s step-end infinite;
+//     width: 26ch; /* 26个字符的宽度 */
+//     font-family: 'Fira Code', monospace; /* 建议使用等宽字体确保ch单位精准 */
+// }
+
+// /* 核心：修改打字动画的时间轴 */
+// @keyframes typing {
+//     0% { width: 0; }
+//     30% { width: 26ch; }   /* 在整个动画的 30% 处（约2.4秒）就已经打完了 */
+//     90% { width: 26ch; }   /* 到 90% 之前，宽度一直保持不变（这就是停顿） */
+//     100% { width: 0; }     /* 最后快速缩回，准备下一轮循环 */
+// }
+
+// /* 光标闪烁动画 */
+// @keyframes blink {
+//     from, to { border-color: transparent }
+//     50% { border-color: var(--accent-color) }
+// }
+
+.typing-slogan {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+
+    /* 1. 字体与颜色约束：修正太小和太黑的问题 */
+    font-family: 'JetBrains Mono', monospace !important; /* 强制使用 JetBrains */
+    // font-size: 1.15rem;   /* ★大手术：从small调大到1.15倍，显眼且精致 */
+    color: #ffffff;       /* ★大手术：从rgba调为纯白色，清晰可见 */
+    // font-weight: 500;     /* 使用中等粗细，JetBrains看起来最有质感 */
+    font-size: 1.5rem;    /* 从 1.15 增加到 1.5，这会非常明显 */
+    font-weight: 500;     /* 加粗，让白色更扎眼、更有力量感 */
+
+    /* 2. 基础打字机逻辑 (保持之前的动画和宽度) */
+    border-right: 3px solid var(--accent-color); /* 随主题变色的光标 */
+    border-radius: 2px;   
+    // animation: typing 8s steps(26) infinite, blink 0.75s step-end infinite;
+    animation: typing 8s steps(26) infinite, blink 0.8s infinite; /* ★微调：blink动画改为0.8s，稍微放慢闪烁节奏 */
+    width: 26ch; /* 26个字符：Keep Moving, Keep Growing. */
+
+    /* 3. 细节魔改 */
+    background: none;     /* 去掉默认背景 */
+    letter-spacing: 0px;  /* 等宽字体严禁调字间距，否则光标会抖 */
+    vertical-align: middle; /* 确保打字机和左边的图标对齐 */
+}
+
+/* 4. 打字动画逻辑 (保持之前的 2.4s打字 + 5.6s停顿) */
+@keyframes typing {
+    0% { width: 0; }
+    30% { width: 26ch; }   /* 在 30% 处（约2.4秒）打完 */
+    90% { width: 26ch; }   /* 到 90% 之前保持全宽（停留时间） */
+    100% { width: 0; }     /* 最后快速缩回 */
+}
+
+/* 5. 光标闪烁动画 */
+// @keyframes blink {
+//     from, to { border-color: transparent }
+//     50% { border-color: var(--accent-color) }
+// }
+
+@keyframes blink {
+    0%, 100% { border-color: rgba(255, 255, 255, 1); }
+    50% { border-color: rgba(255, 255, 255, 0); } /* 平滑过渡到透明 */
+}
+
+/* 1. 极客蓝霓虹灯：用于名字 baceoog */
+.sidebar-neon-name {
+    /* 强制使用 JetBrains Mono 字体，加粗 */
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 700;
+    color: #fff !important; /* 强制白色，充当灯管核心 */
+    
+    /* 核心：极客蓝发光 (科技感) */
+    text-shadow: 
+        0 0 5px #fff,                /* 内发光 */
+        0 0 10px #2196f3,             /* 中层发光 (科技蓝) */
+        0 0 15px #2196f3,             
+        0 0 20px #2196f3 !important;   /* 外层光晕 */
+}
+/* 微光呼吸动画 */
+@keyframes glow-breathe {
+    0%, 100% { opacity: 1; text-shadow: 0 0 4px #fff, 0 0 8px #fff; }
+    50% { opacity: 0.85; text-shadow: 0 0 3px #fff, 0 0 6px #fff; }
+}

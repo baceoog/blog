@@ -2,7 +2,7 @@ baseurl: https://baceoog.github.io/blog/
 languageCode: zh-cn
 theme: hugo-theme-stack
 title: baceoog
-copyright: baceoog
+copyright: BACEOOG
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw

@@ -8,7 +8,7 @@
         {{ now.Format "2006" }} {{ default .Site.Title .Site.Copyright }}
     </section>
     
-    <section class="powerby">
+    <!-- <section class="powerby">
         {{ with .Site.Params.footer.customText }}
             {{ . | safeHTML }} <br/>
         {{ end }}
@@ -19,5 +19,21 @@
 
         {{ T "footer.builtWith" (dict "Generator" $Generator) | safeHTML }} <br />
         {{ T "footer.designedBy" (dict "Theme" $Theme "DesignedBy" $DesignedBy) | safeHTML }}
+    </section> -->
+    <section class="powerby">
+        {{ with .Site.Params.footer.customText }}
+            {{ . | safeHTML }} <br/>
+        {{ end }}
+
+        <!-- 霓虹灯风格 -->
+    <!-- <code style="color: #fff; font-weight: 600; text-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4; background: none;">
+        Keep Moving, Keep Growing.
+    </code> <br /> -->
+        <!-- <code class="typing-slogan">Keep Moving, Keep Growing!</code> <br /> -->
+        <code class="typing-slogan">Keep Moving, Keep Growing!</code> <br />
+        <span style="font-size: 1rem; opacity: 0.5; letter-spacing: 0.5px;">
+            Build with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &amp; 
+            <a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener">Stack</a>.
+        </span>
     </section>
 </footer>
