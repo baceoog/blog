@@ -23,6 +23,8 @@
 :root {
   --body-background: #EBEBEB;
   --accent-color: #1B365D;
+    /* Keep in sync with --accent-color (#1B365D) */
+    --accent-color-rgb: 27, 54, 93;
   --accent-color-darker: #202A44;
   --accent-color-text: #FFF;
   --body-text-color: #202A44;
@@ -52,78 +54,12 @@
   }
 
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'CodeFont'; // 给你的字体起个名字
-//   font-style: normal;
-//   font-weight: 400;
-//   src: url('../../static/fonts/JetBrainsMonoNL-Regular.ttf') format('truetype'); // 指向你的TTF文件
-// }
-
-// :root {
-//   --code-font-family: 'CodeFont', monospace;
-// }
-/* 放在 assets/scss/custom.scss */
-// .typing-slogan {
-//     display: inline-block;
-//     white-space: nowrap;
-//     overflow: hidden;
-//     border-right: 3px solid var(--accent-color); /* 随主题变色的光标 */
-//     animation: typing 3.5s steps(26) infinite, blink 0.75s step-end infinite;
-//     width: 26ch;
-//     font-family: monospace; /* 必须是等宽字体，ch单位才精准 */
-//     color: var(--accent-color-darker); /* 更有质感的深色 */
-// }
-
-// @keyframes typing {
-//     from { width: 0 }
-//     to { width: 26ch }
-// }
-
-// @keyframes blink {
-//     from, to { border-color: transparent }
-//     50% { border-color: var(--accent-color) }
-// }
-// .typing-slogan {
-//   display: inline-block;
-//   white-space: nowrap;
-//   overflow: hidden;
-//   border-right: 3px solid #fff; /* 光标 */
-//   animation: typing 3s steps(26) infinite, blink 0.75s step-end infinite;
-//   width: 26ch; /* 字符个数，包括空格和逗号 */
-//   opacity: 1;
-//   color: #fff;
-// }
-
-
-// .typing-slogan {
-//     display: inline-block;
-//     white-space: nowrap;
-//     overflow: hidden;
-//     /* 设置光标样式 */
-//     border-right: 3px solid var(--accent-color); 
-//     /* 总时长 8 秒：2.4秒打字 + 5.6秒停顿看字 */
-//     animation: 
-//         typing 8s steps(26) infinite, 
-//         blink 0.75s step-end infinite;
-//     width: 26ch; /* 26个字符的宽度 */
-//     font-family: 'Fira Code', monospace; /* 建议使用等宽字体确保ch单位精准 */
-// }
-
-// /* 核心：修改打字动画的时间轴 */
-// @keyframes typing {
-//     0% { width: 0; }
-//     30% { width: 26ch; }   /* 在整个动画的 30% 处（约2.4秒）就已经打完了 */
-//     90% { width: 26ch; }   /* 到 90% 之前，宽度一直保持不变（这就是停顿） */
-//     100% { width: 0; }     /* 最后快速缩回，准备下一轮循环 */
-// }
-
-// /* 光标闪烁动画 */
-// @keyframes blink {
-//     from, to { border-color: transparent }
-//     50% { border-color: var(--accent-color) }
-// }
-
+/*-----------------------------------------------------------------------------
+ * [SECTION] slogan打字机样式模块+名字霓虹灯模块
+ *-----------------------------------------------------------------------------
+ * 1. 实现了slogan打字机且深浅模式自动变色的效果
+ * 2. 实现了名字baceoog的霓虹灯效果，深浅模式自动适配
+ *----------------------------------------------------------------------------*/
 .typing-slogan {
     display: inline-block;
     white-space: nowrap;
@@ -138,10 +74,10 @@
     font-weight: 500;     /* 加粗，让白色更扎眼、更有力量感 */
 
     /* 2. 基础打字机逻辑 (保持之前的动画和宽度) */
-    border-right: 3px solid var(--accent-color); /* 随主题变色的光标 */
+    border-right: 3px solid currentColor; /* 光标跟随文字颜色（深浅模式一致） */
     border-radius: 2px;   
-    // animation: typing 8s steps(26) infinite, blink 0.75s step-end infinite;
-    animation: typing 8s steps(26) infinite, blink 0.8s infinite; /* ★微调：blink动画改为0.8s，稍微放慢闪烁节奏 */
+  
+    animation: typing 8s steps(26) infinite, blink 0.8s infinite; 
     width: 26ch; /* 26个字符：Keep Moving, Keep Growing. */
 
     /* 3. 细节魔改 */
@@ -149,7 +85,17 @@
     letter-spacing: 0px;  /* 等宽字体严禁调字间距，否则光标会抖 */
     vertical-align: middle; /* 确保打字机和左边的图标对齐 */
 }
-
+[data-scheme="light"] .sidebar-neon-name {
+    /* 1. 颜色改为深灰色 (类似代码编辑器的非高亮文本色) */
+    color: #2c3e50 !important; 
+    
+    /* 2. 核心：去掉蓝色光晕，改为非常淡的灰色阴影，增加文字立体感而非发光感 */
+    text-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.1) !important; 
+    
+    /* 3. 动画：如果觉得闪烁太突兀，可以调低透明度变化的幅度 */
+    animation: none; /* 浅色模式下建议名字常亮，不闪烁更稳重 */
+}
 /* 4. 打字动画逻辑 (保持之前的 2.4s打字 + 5.6s停顿) */
 @keyframes typing {
     0% { width: 0; }
@@ -159,32 +105,98 @@
 }
 
 /* 5. 光标闪烁动画 */
-// @keyframes blink {
-//     from, to { border-color: transparent }
-//     50% { border-color: var(--accent-color) }
-// }
-
 @keyframes blink {
-    0%, 100% { border-color: rgba(255, 255, 255, 1); }
-    50% { border-color: rgba(255, 255, 255, 0); } /* 平滑过渡到透明 */
+    /* 0% 和 100% 时，光标颜色等于文字颜色 */
+    0%, 100% { border-right-color: currentColor; } 
+    /* 50% 时，光标变为完全透明（彻底消失） */
+    50% { border-right-color: transparent; } 
 }
+
 
 /* 1. 极客蓝霓虹灯：用于名字 baceoog */
 .sidebar-neon-name {
-    /* 强制使用 JetBrains Mono 字体，加粗 */
     font-family: 'JetBrains Mono', monospace !important;
     font-weight: 700;
-    color: #fff !important; /* 强制白色，充当灯管核心 */
+    transition: all 0.3s ease; /* 模式切换时平滑过渡 */
     
-    /* 核心：极客蓝发光 (科技感) */
-    text-shadow: 
-        0 0 5px #fff,                /* 内发光 */
-        0 0 10px #2196f3,             /* 中层发光 (科技蓝) */
-        0 0 15px #2196f3,             
-        0 0 20px #2196f3 !important;   /* 外层光晕 */
+    /* 深色模式：白芯蓝光 */
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #fff, 0 0 10px #2196f3, 0 0 20px #2196f3 !important;
 }
+
+/* 浅色模式适配 */
+[data-scheme="light"] .typing-slogan {
+    color: #2c3e50 !important; 
+    text-shadow: none !important;
+}
+
 /* 微光呼吸动画 */
 @keyframes glow-breathe {
     0%, 100% { opacity: 1; text-shadow: 0 0 4px #fff, 0 0 8px #fff; }
     50% { opacity: 0.85; text-shadow: 0 0 3px #fff, 0 0 6px #fff; }
+}
+
+/*-----------------------------------------------------------------------------
+ * [SECTION] 统一定义：文章内、列表页以及标签云页面的标签样式
+ *-----------------------------------------------------------------------------
+ * 1. 采用“幽灵按钮”设计：半透明背景 + 边框
+ * 2. 配色逻辑：bg=rgba(var(--accent-color-rgb),0.1)；text/border=var(--accent-color)
+ * 3. 交互：hover 时 bg=var(--accent-color)，text=白色
+ * 4. 字体：等宽 + uppercase + letter-spacing（宏定义风格）
+ * 5. .article-category a : 首页卡片及文章顶部【分类】按钮
+ * 6. .article-tags a     : 首页卡片及文章详情页底部的【标签】按钮
+ * 7. .tagCloud a         : 独立标签云页面（如 /tags/ 路径）中的所有标签
+ * 8. .widget-tagCloud a  : 侧边栏（Sidebar）“标签云”小组件里的所有标签
+ *----------------------------------------------------------------------------*/
+.article-category a,
+.article-tags a,
+.tagCloud a,           /* 针对标签云页面/侧边栏 */
+.widget-tagCloud a {   /* 针对某些侧边栏组件 */
+
+    /* typography & sizing */
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+
+    /* shape & spacing */
+    border-radius: 4px !important;
+    padding: 7px 14px !important;
+    margin-right: 5px;
+    margin-bottom: 8px; /* 稍微增加下间距，防止标签云里上下太挤 */
+    display: inline-flex;
+    align-items: center;
+
+    /* unified color */
+    background-color: rgba(var(--accent-color-rgb), 0.1) !important;
+    color: var(--accent-color) !important;
+    border: 1px solid var(--accent-color) !important;
+
+    transition: all 0.2s ease-in-out;
+}
+
+/* 悬停效果统一 */
+.article-category a:hover,
+.article-tags a:hover,
+.tagCloud a:hover,
+.widget-tagCloud a:hover {
+    background-color: var(--accent-color) !important;
+    color: #ffffff !important;
+    border-color: var(--accent-color) !important;
+    text-decoration: none !important; /* 去掉可能的下划线 */
+}
+
+/* 浅色/深色模式微调 */
+[data-scheme="light"] {
+    .article-category a, .article-tags a, .tagCloud a, .widget-tagCloud a {
+        background-color: rgba(var(--accent-color-rgb), 0.08) !important;
+    }
+}
+
+[data-scheme="dark"] {
+    .article-category a, .article-tags a, .tagCloud a, .widget-tagCloud a {
+        background-color: rgba(var(--accent-color-rgb), 0.12) !important;
+    }
 }
