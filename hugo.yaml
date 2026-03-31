@@ -77,7 +77,7 @@ params:
         readingTime: false
         license:
             enabled: true
-            default: Copyright 2025 baceoog. All rights reserved.
+            default: Copyright baceoog. All rights reserved.
 
     comments:
         enabled: true
